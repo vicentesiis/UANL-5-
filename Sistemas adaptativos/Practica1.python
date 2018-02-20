@@ -1,0 +1,66 @@
+import time, thread
+ 
+#Se crea el array de temperaturas
+temperaturas = [16,17,20,21,23,24,27,28,31,33,36,34,30,26,25,23,20,16,16,13]
+dias={1:"Lunes",2:"Martes",3:"Miercoles",4:"Jueves",5:"Viernes",6:"Sabado",7:"Domingo"}
+#Claves para el ventilador
+claves ={0:"Apagado",1:"Encendido velocidad baja",2:"Encendido velocidad media",3:"Encendido velocidad alta"}
+def Monitor(clave, temperatura):
+         
+        if clave == 0:
+                print "La temperatura es:",temperatura
+                print "El ventilador se encuentra:",claves[clave],"\n"
+                 
+                return
+        elif clave == 1:
+                print "La temperatura es:",temperatura
+                print "El ventilador se encuentra:",claves[clave],"\n"
+                 
+                return
+        elif clave == 2:
+                print "La temperatura es:",temperatura
+                print "El ventilador se encuentra:",claves[clave],"\n"
+                 
+                return
+        elif clave == 3:
+                print "La temperatura es:",temperatura
+                print "El ventilador se encuentra:",claves[clave],"\n"
+                 
+                return
+        time.sleep(2)
+         
+#Se recorre el array
+def principal():
+        contador=1
+ 
+        while True:
+                print"Dia ",dias[contador]
+                for temperatura in temperaturas:
+                         
+         
+                        if temperatura > 10 and temperatura <= 16:
+                                llave=0
+                                Monitor(llave,temperatura)
+ 
+                        elif temperatura > 16 and temperatura <= 20:
+                                llave=1
+                                Monitor(llave,temperatura)
+ 
+                        elif temperatura >20 and temperatura <= 28:
+                                llave =2
+                                Monitor(llave,temperatura)
+ 
+                        elif temperatura >28 and temperatura <= 37:
+                                llave = 3
+                                Monitor(llave,temperatura)
+                        time.sleep(1)
+                contador=contador+1
+                if contador==8 or contador>=9:
+                 
+                 break
+        thread.exit()
+ 
+ 
+        thread.start_new_thread(principal, (llave,temperatura,))
+                                 
+principal()
